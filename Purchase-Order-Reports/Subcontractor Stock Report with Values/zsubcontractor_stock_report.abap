@@ -1,3 +1,10 @@
+"""
+SAP Subcontractor Stock Report with Values Report
+Copyright (c) 2025 [Mohammed Abbas]
+Licensed under CC BY-NC-SA 4.0
+Built with AI assistance to democratize SAP reporting
+"""
+
 REPORT zsubcontractor_stock_report.
 
 "-----------------------------------------------------------------------------

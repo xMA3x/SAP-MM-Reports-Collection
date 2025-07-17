@@ -18,94 +18,6 @@ Purchase Orders are the backbone of procurement. Yet, getting timely insights of
 
 ## 📊 Available Reports
 
-### 1. 📈 PO Status Dashboard
-**Path**: `/PO-Status-Dashboard/`
-
-Track all purchase orders across their lifecycle with real-time insights.
-
-**Key Features**:
-- Real-time PO status tracking
-- Aging analysis with color coding
-- Delivery performance metrics
-- AI-powered delay predictions
-
-**Use Cases**:
-- Daily procurement meetings
-- Vendor follow-ups
-- Management dashboards
-
----
-
-### 2. ⏱️ PO Approval Workflow Monitor
-**Path**: `/PO-Approval-Monitor/`
-
-Identify bottlenecks in your PO approval process and reduce cycle time.
-
-**Key Features**:
-- Approval pending duration
-- Approver workload analysis
-- Historical approval patterns
-- AI suggestions for workflow optimization
-
-**Use Cases**:
-- Process improvement initiatives
-- SLA monitoring
-- Audit compliance
-
----
-
-### 3. 📊 Vendor PO Performance Analyzer
-**Path**: `/Vendor-PO-Performance/`
-
-Comprehensive vendor performance tracking based on PO fulfillment.
-
-**Key Features**:
-- On-time delivery percentage
-- Quality metrics integration
-- Price variance analysis
-- AI-based vendor scoring
-
-**Use Cases**:
-- Vendor negotiations
-- Supplier relationship management
-- Strategic sourcing decisions
-
----
-
-### 4. 💰 PO Spend Analytics
-**Path**: `/PO-Spend-Analytics/`
-
-Deep dive into procurement spending patterns and opportunities.
-
-**Key Features**:
-- Category-wise spend breakdown
-- Maverick buying identification
-- Budget vs actual analysis
-- AI-powered savings opportunities
-
-**Use Cases**:
-- Budget planning
-- Cost reduction projects
-- Category management
-
----
-
-### 5. 🔄 Open PO Aging Report
-**Path**: `/Open-PO-Aging/`
-
-Never miss a delivery date with proactive aging analysis.
-
-**Key Features**:
-- Customizable aging buckets
-- Automatic email alerts
-- Vendor-wise aging summary
-- Predictive delivery dates using AI
-
-**Use Cases**:
-- Daily operations management
-- Vendor escalations
-- Working capital optimization
-
 ## 🚀 Quick Start Guide
 
 ### Using Any Report:
@@ -120,37 +32,18 @@ cd PO-Status-Dashboard/
 cat README.md
 ```
 
-3. **Check requirements**
-```bash
-# For Python-based reports
-pip install -r requirements.txt
-```
 
 4. **Run the report**
 ```bash
-# Example for Python reports
-python po_status_report.py
-
 # Example for ABAP reports
 # Copy code to SE38/SE80 and execute
 ```
 
-## 🛠️ Technical Information
-
-### Data Sources
-- **Primary**: SAP tables EKKO, EKPO, EKET
-- **Secondary**: LFA1 (Vendor Master), MARA (Material Master)
-- **Custom**: Z-tables (if applicable)
 
 ### Compatibility
 - ✅ SAP ECC 6.0
 - ✅ SAP S/4HANA (all versions)
-- ✅ SAP Business One (selected reports)
 
-### Performance
-- Optimized for large datasets (100K+ POs)
-- Background processing capable
-- Incremental data load support
 
 ## 📝 Best Practices
 
@@ -173,39 +66,9 @@ Have a great PO report? We'd love to include it!
 ### Contribution Checklist:
 - [ ] Clear business purpose
 - [ ] Performance tested
-- [ ] Sample output included
 - [ ] Error handling implemented
 - [ ] Documentation complete
 
-## 📊 Report Output Samples
-
-### Sample: PO Status Dashboard
-![PO Status Dashboard](./screenshots/po-status-sample.png)
-
-*Shows real-time PO tracking with intuitive visualizations*
-
-### Sample: Approval Workflow
-![Approval Workflow](./screenshots/approval-workflow-sample.png)
-
-*Identifies bottlenecks in approval chain*
-
-## 🐛 Troubleshooting
-
-### Common Issues:
-
-**"No data found"**
-- Check date range parameters
-- Verify company code
-- Ensure POs exist in the system
-
-**"Authorization error"**
-- Need display authorization for PO tables
-- Contact your basis team for roles
-
-**"Performance issues"**
-- Reduce date range
-- Run in background
-- Check database statistics
 
 ## 📧 Support
 
@@ -220,13 +83,5 @@ Special thanks to:
 - Contributors who enhanced these reports
 - AI tools that accelerated development
 
----
-
-### 📌 Quick Links
-
-- [Main Repository](../)
-- [Inventory Reports](../Inventory-Reports/)
-- [Vendor Reports](../Vendor-Reports/)
-- [Material Master Reports](../Material-Master-Reports/)
 
 **💡 Pro Tip**: Star ⭐ this repository to stay updated with new PO reports!

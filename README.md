@@ -21,32 +21,14 @@ Transform SAP MM reporting from a technical bottleneck into a self-service power
 
 ## 📊 Available Reports
 
-### Purchase Order Reports
-- **PO Status Tracker** - Real-time purchase order status with aging analysis
-- **PO Approval Workflow Monitor** - Track approval bottlenecks and delays
-- **Vendor PO Performance** - Analyze vendor delivery performance
 
-### Inventory Reports
-- **Stock Overview Dashboard** - Multi-plant stock analysis with AI predictions
-- **Material Movement Trends** - Pattern recognition in material consumption
-- **Slow-Moving Stock Analysis** - AI-powered identification of obsolete inventory
-
-### Vendor Reports
-- **Vendor Scorecard** - Comprehensive vendor performance metrics
-- **Price Comparison Analysis** - Historical price trends with anomaly detection
-- **Vendor Payment Terms Optimization** - AI suggestions for payment term improvements
-
-### Material Master Reports
-- **Data Quality Check** - Identify incomplete or inconsistent master data
-- **Material Classification Analysis** - Group materials using AI clustering
-- **Cross-Plant Material Harmonization** - Find duplication opportunities
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 - SAP GUI access (for ABAP-based reports)
-- Python 3.8+ (for AI-powered reports)
 - Basic understanding of SAP MM module
+- Basic understanding of coding and debuging  
 
 ### Installation
 
@@ -67,7 +49,6 @@ Each report contains its own detailed instructions
 ## 🛠️ Technology Stack
 
 - **SAP Technologies**: ABAP, SAP GUI Scripting, RFC
-- **AI/ML**: Python, Pandas, Scikit-learn, TensorFlow
 - **Visualization**: Power BI, Tableau templates included
 - **Automation**: UiPath, Power Automate compatible
 
@@ -102,22 +83,6 @@ Your-Report-Name/
 └── requirements.txt  # Dependencies (if applicable)
 ```
 
-## 📈 Roadmap
-
-- [ ] Add 50+ standard SAP MM reports
-- [ ] Create report generator UI
-- [ ] Build API for report integration
-- [ ] Develop mobile-friendly dashboards
-- [ ] Add multi-language support
-
-## 🌟 Success Stories
-
-> "Reduced report creation time from 2 weeks to 2 hours!" - *Senior MM Consultant*
-
-> "Finally, I can create reports without chasing the ABAP team!" - *MM Team Lead*
-
-> "This repository helped me land my dream job by showcasing technical skills" - *MM Analyst*
-
 ## 📧 Contact & Support
 
 - **LinkedIn**: [Connect with me](https://linkedin.com/in/yourprofile)
@@ -126,7 +91,7 @@ Your-Report-Name/
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the CC-BY-NC-SA-4.0 License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 

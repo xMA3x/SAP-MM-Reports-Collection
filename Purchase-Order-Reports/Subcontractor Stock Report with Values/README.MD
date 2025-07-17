@@ -113,6 +113,7 @@ FG         | 5000001  | Frame Assy  | 100 PC    | 150 PC    | $10,000  | $15,000
 3. **Period Range**
    - From Year/Period: Starting fiscal year and period
    - To Year/Period: Ending fiscal year and period
+      - Note that the period are based on Egypt financial year (starts in month 7 and ends on month 6) whice may need changes based on your company financial year.
    - Default: Previous fiscal year based on current date
 
 ### Running the Report:
@@ -177,14 +178,6 @@ This report was developed using AI assistance to:
 - Run in background for large datasets
 - Consider vendor-specific execution
 
-## 🔄 Future Enhancements
-
-Potential improvements identified:
-- [ ] Multi-currency support
-- [ ] Graphical trend analysis
-- [ ] Email scheduling capability
-- [ ] Integration with vendor portals
-- [ ] Predictive analytics for stock levels
 
 ## 📄 License
 

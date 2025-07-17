@@ -54,20 +54,6 @@ FORM map_condition_name...
 
 **Common Examples by Region**:
 
-*North America/Europe:*
-```abap
-WHEN 'FRA1'.  cv_text = 'Freight Charges'.
-WHEN 'HD00'.  cv_text = 'Handling Fee'.
-WHEN 'MWST'.  cv_text = 'VAT/Sales Tax'.
-```
-
-*India:*
-```abap
-WHEN 'JOCG'.  cv_text = 'CGST'.
-WHEN 'JOSG'.  cv_text = 'SGST'.
-WHEN 'ZCD1'.  cv_text = 'Custom Duty'.
-```
-
 *General Manufacturing:*
 ```abap
 WHEN 'ZFR1'.  cv_text = 'Inbound Freight'.
@@ -89,20 +75,6 @@ WHERE spras = 'EN'.
 WHERE spras = @sy-langu.
 ```
 
-### 4. **Company Code** 🏢
-**What it is**: Your organizational unit in SAP  
-**When needed**: If you implement dynamic currency detection  
-**Example**:
-```abap
-" Add to report header:
-CONSTANTS: gc_bukrs TYPE bukrs VALUE '1000'.  " ← YOUR COMPANY CODE
-
-" Use for currency detection:
-SELECT SINGLE waers FROM t001 
-  INTO ls_final-waers_local 
-  WHERE bukrs = gc_bukrs.
-```
-
 ## 📊 What the Report Shows
 
 ### Sample Output:
@@ -120,65 +92,11 @@ Purchase Order: 4500001234
 └─ TOTAL LANDED COST: $11,800 | Local: ₹885,000
 ```
 
-## 🛠️ Quick Implementation Guide
-
-### Step 1: Identify Your Settings
-Before touching the code, gather:
-- [ ] Your local currency code
-- [ ] List of ALL condition types used in purchasing
-- [ ] Preferred language for displays
-- [ ] Company code (if multiple)
-
-### Step 2: Make the Changes
-
-#### 2.1 Update Currency (2 places):
-```abap
-" Line ~178 and ~258
-ls_final-waers_local = 'YOUR_CURRENCY'.  " e.g., 'USD', 'EUR', 'INR'
-```
-
-#### 2.2 Replace ALL Conditions:
-```abap
-FORM map_condition_name...
-  CASE iv_kschl.
-    " DELETE all existing conditions
-    " ADD your company's conditions:
-    WHEN 'YOUR_CONDITION_1'.  cv_text = 'Your Description 1'.
-    WHEN 'YOUR_CONDITION_2'.  cv_text = 'Your Description 2'.
-    " ... add all your conditions
-    WHEN OTHERS.  cv_text = iv_kschl.
-  ENDCASE.
-ENDFORM.
-```
-
-#### 2.3 Fix Language (if needed):
-```abap
-" Search and replace all:
-WHERE spras = 'EN'    →    WHERE spras = @sy-langu
-WHERE spras = 'AR'    →    WHERE spras = @sy-langu
-```
-
-### Step 3: Create and Test
-1. SE38 → Create Program `ZMM_GR_DELIVERY_COSTS_NEW`
-2. Paste modified code
-3. Activate
-4. Test with ONE purchase order first
-5. Verify all conditions display correctly
-
 ## ❓ How to Find Your Condition Types
 
 **Option 1 - Check a Purchase Order:**
-1. ME23N → Enter any import PO
-2. Item Details → Conditions tab
-3. Note all condition type codes
-
-**Option 2 - Check Pricing Schema:**
-1. SPRO → Materials Management → Purchasing → Conditions
-2. Define Price Determination Process → Define Calculation Schema
-3. Find your schema and list all conditions
-
-**Option 3 - Ask Your MM Functional Lead:**
-They should have a list of all purchasing condition types
+1. SE16N → Enter T685 Table
+2. you will find Condition Types and they names
 
 ## 🐛 Common Issues After Implementation
 

@@ -74,6 +74,9 @@ Connect and share via LinkedIn:
    
    ## Usage
    [How to run and interpret]
+
+   ## Troubleshooting
+   [Posiable error & they soultions]
    ```
 
 2. **source-code.abap** - Your complete ABAP code

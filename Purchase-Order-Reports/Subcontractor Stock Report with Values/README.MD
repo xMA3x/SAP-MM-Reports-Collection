@@ -1,340 +1,189 @@
 # 📊 Subcontractor Stock Report with Values
 
-[⬅️ Back to Purchase Order Reports](../)
+## Overview
 
-## 📋 Overview
+This ABAP report provides comprehensive visibility into materials stored at subcontractor locations, tracking both raw materials (special stock O) and finished goods produced through subcontracting. The report displays beginning and ending balances for any fiscal period with automatic valuation using SAP's moving average prices.
 
-This ABAP report provides comprehensive visibility into subcontractor stock levels and values, tracking both raw materials (ROH) at vendor locations and finished goods (FG) produced through subcontracting. Built with AI assistance to eliminate dependency on technical teams, this report empowers SAP MM consultants to monitor and analyze subcontractor inventory efficiently.
+## Business Purpose
+
+**Problems Solved:**
+- No standard SAP report shows subcontractor stock with values
+- Manual tracking of materials at vendor locations is time-consuming
+- Difficulty reconciling physical inventory at subcontractors
+- No visibility of finished goods produced via subcontracting
+- Month-end closing requires manual calculations
+
+**Business Value:**
+- Complete audit trail for subcontractor inventory
+- Automatic calculation of stock values for financial reporting
+- Support for vendor reconciliation and disputes
+- Efficiency analysis of subcontracting operations
+- Compliance with inventory audit requirements
+
+## Key Features
+
+- **Dual Stock Tracking**: Both raw materials (ROH) and finished goods (FG)
+- **Period Flexibility**: Any fiscal period range with historical data
+- **Automatic Valuation**: Uses SAP moving average prices (MBEW/MBEWH)
+- **Transaction Details**: Complete movement history with drill-down
+- **Multi-Vendor**: Analyze multiple subcontractors simultaneously
+- **ALV Display**: Hierarchical view with subtotals and export options
+- **Currency Support**: Values in company's local currency
+- **Performance Optimized**: Handles large data volumes efficiently
 
 ## ⚠️ CRITICAL: Company-Specific Customizations Required
 
-**This report contains hardcoded values that MUST be customized before use!**
-
-### 🔴 Mandatory Changes:
-
-#### 1. **Company Code** 🏢
-**Current**: Hardcoded as `'1000'`  
-**Location**: Form `merge_stock_data` (line ~875)
+### 1. **Company Code** (Line ~875)
 ```abap
-SELECT SINGLE waers FROM t001 INTO @DATA(lv_waers) WHERE bukrs = '1000'.
+WHERE bukrs = '1000'.  " ← CHANGE TO YOUR COMPANY CODE
 ```
-**Required Action**: Change to your company code or make dynamic
 
-#### 2. **Local Currency** 💰
-**Current**: Defaults to `'USD'` if company code not found  
-**Location**: Form `merge_stock_data` (line ~877)
+### 2. **Default Currency** (Line ~877)
 ```abap
-IF sy-subrc <> 0.
-  lv_waers = 'USD'.  " Default if company code not found
-ENDIF.
+lv_waers = 'USD'.  " ← CHANGE TO YOUR LOCAL CURRENCY
 ```
-**Required Action**: Change default currency to your local currency
 
-#### 3. **Fiscal Year Calendar** 📅
-**Current**: Assumes fiscal year starts in July (SAP standard)  
-**Location**: Multiple places - `INITIALIZATION` and `convert_periods_to_dates`
+### 3. **Fiscal Year Start** (Lines ~69 and ~239)
 ```abap
-" Line ~69: Fiscal year logic
-IF lv_current_month >= 7.
-  p_fryr = sy-datum(4).
+IF lv_current_month >= 7.  " ← CHANGE 7 TO YOUR FISCAL YEAR START MONTH
 ```
-**Required Action**: Adjust if your fiscal year differs:
-- April start: Change 7 to 4
-- January start: Change 7 to 1
-- October start: Change 7 to 10
+- July start = 7 (SAP default)
+- April start = 4
+- January start = 1
 
-#### 4. **Language Settings** 🌐
-**Current**: Hardcoded as `'E'` (English) for descriptions  
-**Location**: Form `get_descriptions` (line ~1687)
+### 4. **Language** (Lines ~1687, ~1695, ~1703, ~1711)
 ```abap
-WHERE spras = 'E'.
+WHERE spras = 'E'.  " ← CHANGE TO YOUR LANGUAGE CODE OR @sy-langu
 ```
-**Required Action**: Change to your required language or use `sy-langu`
 
-#### 5. **Movement Types** 📦
-**Current**: Specific movement types for subcontracting  
-**Location**: Form `read_mseg_transactions`
+### 5. **Movement Types** (Lines ~1180-1184 and ~1207-1209)
+Verify these match your subcontracting process:
 ```abap
-" Raw materials movements:
-AND ( bwart = '101' OR bwart = '102' OR  " GR/Reversal
-      bwart = '541' OR bwart = '542' OR  " Transfer/Reversal
-      bwart = '543' OR bwart = '544' OR  " Special stock transfer
-      bwart = '701' OR bwart = '702' ).  " Consumption/Reversal
-```
-**Required Action**: Verify these match your subcontracting process
-
-## 🎯 Business Purpose
-
-**Problem Solved**: 
-- Manual tracking of materials at subcontractor locations
-- No visibility into stock values at vendor sites
-- Difficulty reconciling subcontractor inventory
-- Time-consuming analysis of subcontracting efficiency
-- Lack of finished goods visibility from subcontracting
-
-**Solution Benefits**:
-- ✅ Real-time stock visibility at vendor locations
-- ✅ Automatic valuation using moving average prices
-- ✅ Dual tracking: Raw materials AND finished goods
-- ✅ Transaction-level detail for auditing
-- ✅ Period-based analysis with historical data
-
-## 🚀 Key Features
-
-### Stock Tracking
-- **Dual Stock Types**: 
-  - ROH: Raw materials at subcontractor (special stock O)
-  - FG: Finished goods produced via subcontracting
-- **Period-Based Analysis**: Beginning and ending balances for any fiscal period
-- **Multi-Vendor Support**: Analyze multiple subcontractors simultaneously
-- **Value Calculation**: Automatic valuation using SAP moving average prices
-
-### Transaction Details
-- Complete movement history within selected period
-- Movement types: Goods receipts, transfers, consumption, deliveries
-- Direct links to material documents and purchase orders
-- Reference document tracking for audit trails
-
-### Display Capabilities
-- Hierarchical display: Material summary with expandable transactions
-- Subtotals by stock type (ROH/FG)
-- Grand totals for quantities and values
-- Export to Excel for further analysis
-
-## 📊 Report Output
-
-### Main Sections:
-
-1. **Material Summary Line** (Line Type = 'M')
-   - Stock Type (ROH/FG)
-   - Material number and description
-   - Beginning/Ending quantities
-   - Beginning/Ending values
-   - Material group and type information
-
-2. **Transaction Details** (Line Type = 'T')
-   - Posting date
-   - Movement type and quantity
-   - Material document reference
-   - Amount in local currency
-   - Purchase order reference
-
-### Sample Output:
-```
-Type | Material | Description     | Vendor | Beg Stock | End Stock | Beg Value | End Value
------|----------|----------------|--------|-----------|-----------|-----------|----------
-ROH  | 4000001  | Steel Sheet    | V12345 | 1,000 PC  | 1,200 PC  | $5,000   | $6,000
-     |          | 15.03.2024 101 | +500   |           |           |          | 
-     |          | 20.03.2024 701 | -300   |           |           |          |
-FG   | 5000001  | Frame Assembly | V12345 | 100 PC    | 150 PC    | $10,000  | $15,000
-     |          | 18.03.2024 101 | +75    |           |           |          |
-     |          | 25.03.2024 601 | -25    |           |           |          |
+" Raw materials:
+bwart = '101' OR '102' OR '541' OR '542' OR '543' OR '544' OR '701' OR '702'
+" Finished goods:
+bwart = '101' OR '102' OR '261' OR '262' OR '601' OR '602'
 ```
 
-## 🛠️ Implementation Guide
+## Installation
 
-### Step 1: Customize the Code
+1. **Open SE38** (ABAP Editor)
 
-#### 1.1 Update Company Settings
-```abap
-" Add at report beginning:
-CONSTANTS: gc_bukrs TYPE bukrs VALUE 'YOUR_COMPANY_CODE',
-           gc_waers TYPE waers VALUE 'YOUR_CURRENCY'.
+2. **Create New Program**
+   - Program name: `ZSUBCONTRACTOR_STOCK_REPORT`
+   - Type: `Executable program`
+   - Status: `Test program`
 
-" Update in merge_stock_data:
-SELECT SINGLE waers FROM t001 INTO @DATA(lv_waers) WHERE bukrs = gc_bukrs.
-IF sy-subrc <> 0.
-  lv_waers = gc_waers.
-ENDIF.
+3. **Copy Source Code**
+   - Copy the entire ABAP code
+   - Paste into the editor
+
+4. **Make Required Customizations**
+   - Update all items listed in CRITICAL section above
+   - Save (Ctrl+S)
+
+5. **Check Syntax** (Ctrl+F2)
+   - Fix any errors before proceeding
+
+6. **Activate** (Ctrl+F3)
+   - Program is now ready to use
+
+7. **Create Transaction Code** (Optional)
+   - SE93 → New
+   - Transaction code: `ZMM_SUBCON_STOCK`
+   - Select "Program and selection screen"
+   - Program: `ZSUBCONTRACTOR_STOCK_REPORT`
+
+## Usage
+
+### Running the Report
+
+1. **Execute Transaction** `ZMM_SUBCON_STOCK` or run via SE38
+
+2. **Selection Screen Parameters:**
+   - **Material**: Optional - leave blank for all materials
+   - **Supplier**: Required - select subcontractor vendor(s)
+   - **From Year/Period**: Start of analysis period
+   - **To Year/Period**: End of analysis period
+
+3. **Example Entries:**
+   ```
+   Material: [blank for all]
+   Supplier: 100523
+   From Year/Period: 2024 / 01
+   To Year/Period: 2024 / 03
+   ```
+
+4. **Execute** (F8)
+
+### Understanding the Output
+
+**Display Structure:**
+```
+Type | Material | Description | Vendor | Beg Stock | End Stock | Beg Value | End Value
+ROH  | M100    | Steel Sheet | V100   | 1,000 PC  | 1,200 PC  | $5,000    | $6,000
+     |         | 15.01.2024 101 +500 |           |           |           |
+     |         | 20.02.2024 543 -300 |           |           |           |
+FG   | F200    | Frame Assy  | V100   | 100 PC    | 150 PC    | $10,000   | $15,000
 ```
 
-#### 1.2 Fix Fiscal Year (if needed)
-```abap
-" For April-March fiscal year:
-IF lv_current_month >= 4.
-  p_fryr = sy-datum(4).
-ELSE
-  p_fryr = sy-datum(4) - 1.
-ENDIF.
+**Key Elements:**
+- **ROH**: Raw materials at subcontractor
+- **FG**: Finished goods from subcontracting
+- **Line Type M**: Material summary with balances
+- **Line Type T**: Individual transactions
+- **Subtotals**: By stock type (ROH/FG)
 
-" Update convert_periods_to_dates accordingly
-```
+### ALV Functions
+- **Export**: Spreadsheet → Excel
+- **Sort**: Click column headers
+- **Filter**: Set filters icon
+- **Subtotals**: View → Subtotals
+- **Save Layout**: Settings → Layout → Save
 
-#### 1.3 Language Settings
-```abap
-" Replace all:
-WHERE spras = 'E'
-" With:
-WHERE spras = @sy-langu
-```
+## Troubleshooting
 
-### Step 2: Create and Test
+### "No stock data found for the selected criteria"
+**Causes & Solutions:**
+- No subcontractor stock exists → Check MSLB table directly
+- Wrong vendor selected → Verify vendor is marked as subcontractor
+- Wrong period → Check fiscal year configuration
+- Authorization issue → Verify access to MSLB/MSLBH tables
 
-1. **Create Program**: SE38 → `ZSUBCONTRACTOR_STOCK_REPORT`
-2. **Initial Test**: Run with single vendor for current period
-3. **Validate**:
-   - [ ] Currency displays correctly
-   - [ ] Stock quantities match MSLB
-   - [ ] Values calculate properly
-   - [ ] Fiscal periods work correctly
+### "Values showing as 0.00"
+**Causes & Solutions:**
+- No moving average price → Check MBEW for the material
+- Wrong valuation area → Verify plant configuration
+- Price unit issue → Check MBEW-PEINH is maintained
+- Historical data missing → Run CKMLCP for historical periods
 
-### Step 3: Deploy
+### "Wrong fiscal period calculations"
+**Causes & Solutions:**
+- Fiscal year variant different → Update the month check (line ~69)
+- Period conversion wrong → Verify convert_periods_to_dates logic
+- Year rollover issue → Check calculate_previous_period form
 
-1. **Create Transaction**: SE93 → `ZMM_SUBCON_STOCK`
-2. **Authorization**: Ensure users have access to required tables
-3. **Training**: Create user guide with your customizations
+### "Missing finished goods"
+**Causes & Solutions:**
+- No subcontracting POs → Check EKPO-PSTYP = '3'
+- Wrong movement types → Verify goods receipts with BWART = '101'
+- Special stock indicator → FG should have SOBKZ = space
+- Material filter too restrictive → Remove material selection
 
-## 💻 Usage Instructions
+### "Performance issues"
+**Causes & Solutions:**
+- Date range too large → Limit to 3-6 months
+- Too many vendors → Run for specific vendors
+- Missing indexes → Check with BASIS team
+- Run in background → Use F9 instead of F8
 
-### Selection Screen Parameters:
-
-| Field | Description | Required | Tips |
-|-------|-------------|----------|------|
-| Material | Material number(s) | No | Leave blank for all materials |
-| Supplier | Vendor number(s) | Yes | Subcontractor vendors only |
-| From Year/Period | Start of analysis | Yes | Fiscal year/period |
-| To Year/Period | End of analysis | Yes | Must be ≥ From period |
-
-### Execution Steps:
-
-1. **Enter Vendor** (mandatory) - Select subcontractor(s)
-2. **Set Period Range** - Align with your reporting needs
-3. **Execute** (F8)
-4. **Analyze Results**:
-   - Check ROH vs FG quantities
-   - Review stock values
-   - Examine transactions
-
-### Tips for Effective Use:
-
-- 📅 **Period Selection**: End period = current shows live data from MSLB
-- 🔍 **Material Filter**: Use to focus on specific items
-- 💡 **Value Analysis**: Compare beginning vs ending values for trends
-- 📊 **Export Options**: Use ALV export for Excel analysis
-
-## 📝 Business Scenarios
-
-### Scenario 1: Month-End Reconciliation
-**Use Case**: Verify subcontractor inventory for financial closing  
-**How to Use**:
-1. Set period to current month
-2. Run for all subcontractors
-3. Export and compare with vendor statements
-
-### Scenario 2: Material Provisioning Analysis
-**Use Case**: Determine optimal stock levels at vendors  
-**How to Use**:
-1. Run for 3-6 month range
-2. Analyze consumption patterns
-3. Identify over/under stocking
-
-### Scenario 3: Subcontracting Efficiency
-**Use Case**: Track FG output vs raw material consumption  
-**How to Use**:
-1. Compare ROH consumption to FG production
-2. Calculate yield/efficiency
-3. Identify discrepancies
-
-### Scenario 4: Audit Support
-**Use Case**: Provide detailed movement history for auditors  
-**How to Use**:
-1. Select specific period under audit
-2. Focus on high-value materials
-3. Export transaction details
-
-## 🤖 AI-Powered Development
-
-This report was developed using AI assistance to:
-- Handle complex fiscal period calculations
-- Implement dual stock type tracking (ROH & FG)
-- Create sophisticated ALV hierarchy
-- Optimize performance for large datasets
-- Generate comprehensive error handling
-
-**Note**: While AI accelerated development, all code has been tested and validated in real SAP environments to ensure accuracy and performance.
-
-## ⚡ Performance Considerations
-
-- **Data Volume**: Optimized for 100K+ records
-- **Database Access**: Uses FOR ALL ENTRIES efficiently
-- **Period Logic**: Minimizes table reads by checking current period once
-- **Background Processing**: Supported for large selections
-- **Memory Management**: Clears work areas appropriately
-
-### Performance Tips:
-1. Limit date ranges for faster execution
-2. Use material selection to reduce data
-3. Run in background for historical analysis
-4. Save ALV layouts to avoid reconfiguration
-
-## 🐛 Troubleshooting
-
-### Common Issues:
-
-**"No stock data found"**
-- ✓ Check vendor has special stock indicator 'O'
-- ✓ Verify fiscal year/period selection
-- ✓ Ensure subcontracting POs exist
-- ✓ Check authorizations for MSLB/MSLBH
-
-**"Values showing as zero"**
-- ✓ Verify material has moving average price
-- ✓ Check MBEW/MBEWH entries exist
-- ✓ Ensure price unit (PEINH) is maintained
-- ✓ Confirm valuation area is active
-
-**"Wrong fiscal period"**
-- ✓ Verify your fiscal year variant
-- ✓ Check initialization logic matches your calendar
-- ✓ Ensure period conversion is correct
-
-**"Missing finished goods"**
-- ✓ Check goods receipts have movement type 101
-- ✓ Verify subcontracting indicator in PO
-- ✓ Ensure no special stock indicator on FG
-
-### Debug Points:
-```abap
-" Key areas to set breakpoints:
-FORM calculate_previous_period.     " Period calculation
-FORM get_fg_materials.             " FG identification
-FORM read_stock_balances.          " Stock retrieval
-FORM merge_stock_data.             " Value calculation
-```
-
-## 📈 Future Enhancement Ideas
-
-Based on community feedback, consider adding:
-- [ ] Batch/serial number tracking
-- [ ] Multiple currency display
-- [ ] Graphical charts
-- [ ] Email distribution
-- [ ] Vendor portal integration
-- [ ] Predictive stock analysis
-
-## 📄 License
-
-This work is licensed under Creative Commons BY-NC-SA 4.0
-- ✅ Free for personal/educational use
-- ✅ Modify and share improvements
-- ❌ No commercial distribution
-- ⏰ Attribution required
-
-## 🙏 Acknowledgments
-
-- SAP MM community for business requirements
-- AI tools for accelerating development
-- Beta testers for valuable feedback
-- Contributors who enhance this report
+### "Authorization error"
+**Required Authorization Objects:**
+- M_MSEG_WMB (Material documents)
+- M_MRES_BWA (Material movements)
+- M_MATE_WRK (Material master)
+- F_BKPF_BUK (Company code)
 
 ---
 
-### ⭐ Remember to:
-1. **Customize** all critical settings before use
-2. **Test** thoroughly in development first
-3. **Document** your specific customizations
-4. **Share** improvements back to the community
-
-**Questions?** Check the [main repository](../../) discussions or create an issue.
-
-**Found this helpful?** Give it a star ⭐ and share with your network!
+**💡 Pro Tip**: Always test with a single vendor and current month first to verify customizations are correct!

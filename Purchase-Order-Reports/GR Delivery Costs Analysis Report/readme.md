@@ -52,7 +52,7 @@ FORM map_condition_name...
     " ... etc
 ```
 
-**Common Examples by Region**:
+**Common Example**:
 
 *General Manufacturing:*
 ```abap

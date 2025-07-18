@@ -26,11 +26,6 @@ Transform SAP MM reporting from a technical bottleneck into a self-service power
 - **🛠️ No ABAP Required**: Functional consultants can customize reports themselves
 - **🌍 Community-Driven**: Learn from and contribute to a global community
 
-## 📊 Available Report Categories
-
-### 📦 Purchase Order Reports
-- **[Subcontractor Stock Report](./Purchase-Order-Reports/Subcontractor-Stock-Report/)** - Track materials at vendor locations with valuations
-- **[GR Delivery Costs Analysis](./Purchase-Order-Reports/GR-Delivery-Costs/)** - Calculate total landed costs including freight, customs, etc.
 
 ## 🤖 How AI Powers These Reports
 

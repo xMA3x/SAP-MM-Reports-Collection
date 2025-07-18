@@ -95,7 +95,7 @@ Every contribution, no matter how small, makes a difference. Whether you've:
 
 ### 💭 Want to see your name here?
 
-[Check our contribution guide](./[CONTRIBUTING.md](https://github.com/xMA3x/SAP-MM-Reports-Collection/blob/main/How%20to%20Contribute.md)) and join our growing community of SAP MM innovators!
+[Check our contribution guide]((https://github.com/xMA3x/SAP-MM-Reports-Collection/blob/main/How%20to%20Contribute.md)](https://github.com/xMA3x/SAP-MM-Reports-Collection/tree/main/Purchase-Order-Reports)) and join our growing community of SAP MM innovators!
 
 ---
 

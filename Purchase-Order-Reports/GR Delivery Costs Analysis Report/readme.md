@@ -192,19 +192,18 @@ PO: 4500001234 | Vendor: ABC Corp | Incoterms: CIF | Payment: N30
 - M_MATE_MAT (Material master)
 
 ### "How to find my condition types"
-Option 1 - Check a Purchase Order:
 
-    SE16N → Enter T685 Table
-    you will find Condition Types and they names
+1. go to SE16N → Enter T685 Table
+   you will find Condition Types and they names
 
+   
+**💡 Pro Tip**: Run the report first with your conditions unmapped - the output will show the condition codes, then you can add proper descriptions!
 ---
 
-Attribution info
-
+Attribution info:
     Author: Mohammed Abbas
     LinkedIn: [LinkedIn Profile](https://www.linkedin.com/in/mohammed-abbas-6067091b4/)
     Contribution: Original report development with AI assistance
     Date: June 2025
 
 
-**💡 Pro Tip**: Run the report first with your conditions unmapped - the output will show the condition codes, then you can add proper descriptions!

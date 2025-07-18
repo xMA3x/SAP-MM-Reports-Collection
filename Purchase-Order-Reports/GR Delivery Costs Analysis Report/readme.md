@@ -47,18 +47,9 @@ ls_final-waers_local = 'EGP'.  " ← CHANGE THIS TO YOUR CURRENCY
 FORM map_condition_name...
   CASE iv_kschl.
     " REPLACE THESE WITH YOUR CONDITION TYPES:
-    WHEN 'ZADS'.  cv_text = 'مصاريف اضافية'.     " ← Your conditions
-    WHEN 'ZBNK'.  cv_text = 'مصاريف بنكية'.      " ← Your descriptions
+    WHEN 'ZINS'.  cv_text = 'Insurance'.     " ← Your conditions
+     WHEN 'ZFRE'.  cv_text = 'Freight'.      " ← Your descriptions
     " ... etc
-```
-
-**Common Example**:
-
-*General Manufacturing:*
-```abap
-WHEN 'ZFR1'.  cv_text = 'Inbound Freight'.
-WHEN 'ZIN1'.  cv_text = 'Insurance'.
-WHEN 'ZPK1'.  cv_text = 'Packing Charges'.
 ```
 
 ### 3. **Language Settings** 🌐

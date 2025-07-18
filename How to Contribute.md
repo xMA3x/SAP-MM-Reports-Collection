@@ -33,7 +33,7 @@ Not comfortable with Git? No problem!
 
 For those who prefer email:
 
-1. **Send to**: [mohammed.ahmed.abbas4@gmail.com]
+1. **Send to**: [My email][mohammed.ahmed.abbas4@gmail.com]
 2. **Subject**: `SAP MM Report Contribution - [Report Name]`
 3. **Include**:
    - Report files as attachments
@@ -44,7 +44,7 @@ For those who prefer email:
 
 Connect and share via LinkedIn:
 
-1. **Connect with me**: [[Your LinkedIn Profile](https://www.linkedin.com/in/mohammed-abbas-6067091b4/)]
+1. **Connect with me**: [[My LinkedIn Profile](https://www.linkedin.com/in/mohammed-abbas-6067091b4/)]
 2. **Send a message** with:
    - Report overview
    - Link to files (Google Drive, OneDrive, etc.)

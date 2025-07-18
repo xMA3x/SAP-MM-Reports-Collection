@@ -205,12 +205,6 @@ CASE kschl.
 
 ---
 
-### 📌 Quick Links
-
-- [Main Repository](../)
-- [Inventory Reports](../Inventory-Reports/)
-- [Vendor Reports](../Vendor-Reports/)
-- [Material Master Reports](../Material-Master-Reports/)
 
 **💡 Pro Tip**: Star ⭐ individual reports you find useful to track updates!
 

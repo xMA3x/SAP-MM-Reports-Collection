@@ -185,5 +185,12 @@ FG   | F200    | Frame Assy  | V100   | 100 PC    | 150 PC    | $10,000   | $15,
 - F_BKPF_BUK (Company code)
 
 ---
+Attribution info
+
+- **Author**: [Mohammed Abbas]
+- **LinkedIn**: [[Your LinkedIn Profile]](https://www.linkedin.com/in/mohammed-abbas-6067091b4/)
+- **Contribution**: Original report development with AI assistance
+- **Date**: June 2025
+
 
 **💡 Pro Tip**: Always test with a single vendor and current month first to verify customizations are correct!

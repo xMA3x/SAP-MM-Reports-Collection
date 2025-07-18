@@ -21,6 +21,7 @@ Purchase Orders are the backbone of procurement, yet getting meaningful insights
 ### 1. 🏭 [Subcontractor Stock Report with Values](./Subcontractor-Stock-Report/)
 
 **Purpose**: Track materials at subcontractor locations with complete valuation
+**Author**: Mohammed Abbas [Linkedin](https://www.linkedin.com/in/mohammed-abbas-6067091b4/)
 
 **Key Features**:
 - Dual tracking: Raw materials (ROH) and Finished goods (FG)
@@ -44,6 +45,7 @@ Purchase Orders are the backbone of procurement, yet getting meaningful insights
 ### 2. 💰 [GR Delivery Costs Analysis](./GR-Delivery-Costs/)
 
 **Purpose**: Calculate total landed costs including all delivery charges
+**Author**: Mohammed Abbas [Linkedin](https://www.linkedin.com/in/mohammed-abbas-6067091b4/)
 
 **Key Features**:
 - Combines GR values with invoice conditions
@@ -61,24 +63,6 @@ Purchase Orders are the backbone of procurement, yet getting meaningful insights
 - Local currency setting
 - Condition type mappings
 - Language preferences
-
-## ⚠️ Before You Start
-
-**EVERY report requires customization!** Look for these common areas:
-
-### 🔴 Must-Check Items:
-1. **Currency** - Usually hardcoded, must match your company
-2. **Company Code** - Often defaulted to '1000'
-3. **Condition Types** - Pricing conditions vary by implementation
-4. **Fiscal Year** - May assume July start (SAP standard)
-5. **Language** - Often hardcoded to 'EN' or specific language
-
-### 📍 Where to Look:
-Each report README has a section:
-```
-⚠️ CRITICAL: Company-Specific Customizations Required
-```
-This section lists EXACTLY what you need to change and where.
 
 ## 🚀 Quick Implementation Path
 
@@ -119,22 +103,6 @@ This section lists EXACTLY what you need to change and where.
 | **Best For** | Subcontracting scenarios | Import purchases |
 | **Complexity** | Medium | Low |
 
-## 🛠️ Technical Information
-
-### Common Tables Used
-- **EKKO/EKPO**: Purchase order header and items
-- **EKBE**: Purchase order history (goods receipts)
-- **EKBZ**: Purchase order history (conditions)
-- **MSLB/MSLBH**: Special stocks at vendor
-- **MBEW/MBEWH**: Material valuation
-- **MSEG**: Material movements
-
-### Performance Notes
-- All reports optimized for large data volumes
-- Background processing supported
-- Efficient database access patterns
-- ALV grid for flexible display
-
 ## 💡 Tips for Success
 
 ### Do's ✅
@@ -153,7 +121,7 @@ This section lists EXACTLY what you need to change and where.
 
 ## 🤝 Contributing New PO Reports
 
-Have a great PO report? We'd love to include it!
+Have a great PO report? We'd love to include it! please see out [contibution guide](https://github.com/xMA3x/SAP-MM-Reports-Collection/blob/main/How%20to%20Contribute.md) and maek your name in our [CONTRIBUTORS](https://github.com/xMA3x/SAP-MM-Reports-Collection/blob/main/CONTRIBUTORS.md)
 
 ### What We're Looking For:
 - Reports that solve real MM problems
@@ -178,22 +146,6 @@ Have a great PO report? We'd love to include it!
 2. Review sample outputs
 3. Understand data flow
 4. Check customization points
-
-### Common Customization Patterns:
-```abap
-" Currency: Look for
-lv_waers = 'USD'.  " Change to your currency
-
-" Company: Look for  
-WHERE bukrs = '1000'.  " Change to your company
-
-" Language: Look for
-WHERE spras = 'EN'.  " Change to your language
-
-" Conditions: Look for
-CASE kschl.
-  WHEN 'ZFRT'.  " Your conditions
-```
 
 
 ## 📧 Support

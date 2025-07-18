@@ -33,7 +33,7 @@ Not comfortable with Git? No problem!
 
 For those who prefer email:
 
-1. **Send to**: [My email][mohammed.ahmed.abbas4@gmail.com]
+1. **Send to**: [My email](mohammed.ahmed.abbas4@gmail.com)
 2. **Subject**: `SAP MM Report Contribution - [Report Name]`
 3. **Include**:
    - Report files as attachments

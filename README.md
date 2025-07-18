@@ -2,87 +2,134 @@
 
 [![SAP](https://img.shields.io/badge/SAP-MM-blue.svg)](https://www.sap.com/)
 [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/yourusername/repo/issues)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/license-CC--BY--NC--SA--4.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![AI-Powered](https://img.shields.io/badge/AI-Powered-purple.svg)](https://github.com/yourusername/repo)
 
 ## 📋 Overview
 
-Welcome to the **SAP MM AI-Powered Reports Collection** - a community-driven repository revolutionizing how SAP MM consultants create and share reports. This project empowers functional consultants to build sophisticated reports without depending on technical teams, leveraging AI and modern automation techniques.
+Welcome to the **SAP MM AI-Powered Reports Collection** - a community-driven repository that empowers SAP MM consultants to create sophisticated reports without depending on technical teams. By leveraging AI assistance and modern development practices, we're democratizing SAP reporting for functional consultants worldwide.
 
 ### 🎯 Mission
-Transform SAP MM reporting from a technical bottleneck into a self-service powerhouse, saving countless hours for consultants worldwide.
+Transform SAP MM reporting from a technical bottleneck into a self-service powerhouse, saving countless hours and empowering consultants to deliver value faster.
 
 ## 💡 Why This Repository?
 
-- **🚫 No More Waiting**: Stop depending on busy technical teams for simple reports
-- **⏱️ Save Time**: Pre-built reports ready to use in minutes, not days
-- **🤝 Community-Driven**: Contribute your reports, benefit from others'
-- **🎓 Learn & Grow**: See how AI can enhance traditional SAP MM work
-- **📈 Career Boost**: Showcase your technical skills alongside functional expertise
+### The Problem
+- **⏳ Long Wait Times**: Weeks waiting for ABAP developers to create simple reports
+- **🚫 Technical Dependency**: Functional consultants blocked by technical resource availability
+- **💰 High Costs**: Simple reports requiring expensive technical resources
+- **📊 Limited Flexibility**: Standard reports don't meet specific business needs
 
-## 📊 Available Reports
+### Our Solution
+- **🤖 AI-Assisted Development**: Use AI to generate ABAP code from business requirements
+- **📚 Pre-Built Templates**: Ready-to-use reports for common MM scenarios
+- **🛠️ No ABAP Required**: Functional consultants can customize reports themselves
+- **🌍 Community-Driven**: Learn from and contribute to a global community
+
+## 📊 Available Report Categories
+
+### 📦 Purchase Order Reports
+- **[Subcontractor Stock Report](./Purchase-Order-Reports/Subcontractor-Stock-Report/)** - Track materials at vendor locations with valuations
+- **[GR Delivery Costs Analysis](./Purchase-Order-Reports/GR-Delivery-Costs/)** - Calculate total landed costs including freight, customs, etc.
+
+## 🤖 How AI Powers These Reports
+
+### The Process
+1. **Business Requirement** → Functional consultant describes the need
+2. **AI Generation** → AI creates the ABAP code structure
+3. **Customization** → Consultant adjusts for company-specific needs
+4. **Validation** → Test in sandbox environment
+5. **Deployment** → Ready for production use
 
 
+### What You Still Control
+- ✅ Business logic and rules
+- ✅ Company-specific customizations
+- ✅ Testing and validation
+- ✅ Documentation and training
 
-## 🚀 Quick Start
 
-### Prerequisites
-- SAP GUI access (for ABAP-based reports)
-- Basic understanding of SAP MM module
-- Basic understanding of coding and debuging  
+## 🚀 Quick Start Guide
 
-### Installation
+### For Report Users
 
-1. **Clone the repository**
-```bash
-git clone https://github.com/yourusername/SAP-MM-Reports-Collection.git
-cd SAP-MM-Reports-Collection
+1. **Browse Reports**
+   - Check available reports in category folders
+   - Read report-specific README files
+
+2. **Identify Customizations**
+   - Each README highlights required changes
+   - Look for `⚠️ CRITICAL` sections
+
+3. **Implement Report**
+   ```
+   SE38 → Create Program → Copy Code → Customize → Activate → Test
+   ```
+
+4. **Share Feedback**
+   - Report issues or improvements
+   - Share your customizations
+
+### For Contributors
+
+1. **Fork Repository**
+2. **Add Your Report**
+   ```
+   Category-Folder/
+   └── Your-Report-Name/
+       ├── README.md (use template)
+       ├── source-code.abap
+       ├── screenshots/
+       └── sample-output.xlsx
+   ```
+
+3. **Document Thoroughly**
+   - Explain business purpose
+   - Highlight customization points
+   - Include examples
+4. **Submit Pull Request**
+
+## 📝 Report Template Structure
+
+Every report should include:
+```
+Your-Report/
+├── README.md
+│   ├── Overview & Business Purpose
+│   ├── ⚠️ Company Customizations Required
+│   ├── Key Features
+│   ├── Installation Steps
+│   ├── Usage Instructions
+│   └── Troubleshooting
+├── source-code.abap
+├── screenshots/ [if any]
+│   ├── selection-screen.png
+│   └── output-example.png
+└── sample-data/ [if any]
+    └── test-data.xlsx
 ```
 
-2. **Choose your report**
-```bash
-cd Purchase-Order-Reports/PO-Status-Report
-```
+## 🛡️ Best Practices
 
-3. **Follow the report-specific README**
-Each report contains its own detailed instructions
+### Security
+- ❌ Never include real company data
+- ❌ Remove hardcoded passwords/users
+- ✅ Use generic examples
+- ✅ Implement authorization checks
 
-## 🛠️ Technology Stack
+### Performance
+- ✅ Use FOR ALL ENTRIES correctly
+- ✅ Implement date range limits
+- ✅ Add background processing option
+- ✅ Consider data volume impacts
 
-- **SAP Technologies**: ABAP, SAP GUI Scripting, RFC
-- **Visualization**: Power BI, Tableau templates included
-- **Automation**: UiPath, Power Automate compatible
+### Documentation
+- ✅ Explain WHY, not just HOW
+- ✅ Include business context
+- ✅ Document all customization points
+- ✅ Provide troubleshooting guides
 
-## 🤝 Contributing
-
-We welcome contributions from SAP MM professionals worldwide! Here's how you can help:
-
-### How to Contribute
-
-1. **Fork** the repository
-2. **Create** your feature branch (`git checkout -b feature/AmazingReport`)
-3. **Commit** your changes (`git commit -m 'Add Material Aging Report'`)
-4. **Push** to the branch (`git push origin feature/AmazingReport`)
-5. **Open** a Pull Request
-
-### Contribution Guidelines
-
-- ✅ Include clear documentation
-- ✅ Add sample data (anonymized)
-- ✅ Provide screenshots of output
-- ✅ Test on at least SAP ECC 6.0 or S/4HANA
-- ✅ Follow existing folder structure
-
-### Report Template
-
-```
-Your-Report-Name/
-├── README.md          # Report description and usage
-├── source/           # Source code files
-├── samples/          # Sample data and outputs
-├── screenshots/      # Visual examples
-└── requirements.txt  # Dependencies (if applicable)
-```
-
+---
 ## 📧 Contact & Support
 
 - **LinkedIn**: [Connect with me](https://linkedin.com/in/yourprofile)

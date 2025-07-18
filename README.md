@@ -83,6 +83,7 @@ Transform SAP MM reporting from a technical bottleneck into a self-service power
    - Highlight customization points
    - Include examples
 4. **Submit Pull Request**
+See the [How to Contribute.md](https://github.com/xMA3x/SAP-MM-Reports-Collection/blob/main/How%20to%20Contribute.md) file for more Contribution options.
 
 ## 📝 Report Template Structure
 

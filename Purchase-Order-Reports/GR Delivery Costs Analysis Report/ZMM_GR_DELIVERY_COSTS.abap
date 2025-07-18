@@ -293,22 +293,11 @@ START-OF-SELECTION.
 FORM map_condition_name USING iv_kschl TYPE kschl
                           CHANGING cv_text TYPE char60.
   CASE iv_kschl.
-    WHEN 'ZADS'.  cv_text = 'مصاريف اضافية'.      " Additional expenses
-    WHEN 'ZBNK'.  cv_text = 'مصاريف بنكية'.       " Bank charges
-    WHEN 'ZBNP'.  cv_text = 'مصاريف بنكية %'.     " Bank charges %
-    WHEN 'ZCLE'.  cv_text = 'مصاريف تخليص'.       " Clearance fees
-    WHEN 'ZCUM'.  cv_text = 'مرسوم النافذة الجمرك'. " Customs window fees
-    WHEN 'ZDIF'.  cv_text = 'ضريبة الوارد %'.      " Import tax %
     WHEN 'ZFRE'.  cv_text = 'Freight'.            " Freight charges
     WHEN 'ZFRG'.  cv_text = 'FOB Charge / FCA'.   " FOB/FCA charges
     WHEN 'ZINS'.  cv_text = 'Insurance'.          " Insurance (fixed)
     WHEN 'ZINU'.  cv_text = 'Insurance %'.        " Insurance (percentage)
     WHEN 'ZOB1'.  cv_text = 'Customs (Value)'.    " Customs duty
-    WHEN 'ZPAK'.  cv_text = 'مصاريف تعبئة'.        " Packing expenses
-    WHEN 'ZSMP'.  cv_text = 'دمغة علمية'.          " Scientific stamp
-    WHEN 'ZSTE'.  cv_text = 'مصروف تخزين'.         " Storage expenses
-    WHEN 'ZTR1'.  cv_text = 'مصاريف نقل'.          " Transport expenses
-    WHEN 'ZUNL'.  cv_text = 'مصاريف تفريغ'.        " Unloading expenses
     WHEN 'ZVAT'.  cv_text = 'VAT'.                " Value Added Tax
     WHEN OTHERS.
       cv_text = iv_kschl.

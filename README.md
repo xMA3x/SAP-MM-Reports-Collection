@@ -127,13 +127,12 @@ Your-Report/
 ---
 ## 📧 Contact & Support
 
-- **LinkedIn**: [Connect with me](https://linkedin.com/in/yourprofile)
-- **Issues**: [Report bugs or request features](https://github.com/yourusername/repo/issues)
-- **Discussions**: [Join our community](https://github.com/yourusername/repo/discussions)
+- **LinkedIn**: [Connect with me]([https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/mohammed-abbas-6067091b4/))
+- **Issues**: [Report bugs or request features]([https://github.com/yourusername/repo/issues](https://github.com/xMA3x/SAP-MM-Reports-Collection/issues))
 
 ## 📄 License
 
-This project is licensed under the CC-BY-NC-SA-4.0 License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the CC-BY-NC-SA-4.0 License - see the [LICENSE](https://github.com/xMA3x/SAP-MM-Reports-Collection/blob/main/LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 

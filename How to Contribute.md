@@ -33,7 +33,7 @@ Not comfortable with Git? No problem!
 
 For those who prefer email:
 
-1. **Send to**: [your-email@example.com]
+1. **Send to**: [mohammed.ahmed.abbas4@gmail.com]
 2. **Subject**: `SAP MM Report Contribution - [Report Name]`
 3. **Include**:
    - Report files as attachments
@@ -44,7 +44,7 @@ For those who prefer email:
 
 Connect and share via LinkedIn:
 
-1. **Connect with me**: [Your LinkedIn Profile]
+1. **Connect with me**: [[Your LinkedIn Profile](https://www.linkedin.com/in/mohammed-abbas-6067091b4/)]
 2. **Send a message** with:
    - Report overview
    - Link to files (Google Drive, OneDrive, etc.)
@@ -165,29 +165,6 @@ Create an issue titled `[Question] Should I contribute...` and describe your rep
 - Improve existing reports
 - Add translations
 - Enhance documentation
-
----
-
-## 📌 Quick Contribution Template
-
-Copy this for easy submission:
-
-```
-**Report Name**: 
-**Category**: Purchase Order / Inventory / Vendor / Material Master
-**Business Problem Solved**: 
-**Key Features**: 
-- 
-- 
-- 
-**Customization Points**: 
-- Currency: Line XX
-- Company Code: Line XX
-- Other: 
-**Tested On**: ECC 6.0 / S/4HANA
-**Author**: [Your Name]
-**LinkedIn**: [Your Profile URL]
-```
 
 ---
 
